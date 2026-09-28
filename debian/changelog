@@ -1,3 +1,15 @@
+golang-github-godbus-dbus (4.0.0~git20170308-0vyatta5) unstable; urgency=medium
+
+  * debian/rules: exclude _examples via DH_GOLANG_EXCLUDES. It installs to
+    the same path Debian's real golang-dbus-dev (v5) uses for its own
+    examples; vci needs both this v4-era fork (directly) and the real v5
+    (transitively, via golang-go-systemd-dev) in the same build root, and
+    dpkg refused to install both: "trying to overwrite '.../godbus/dbus/
+    _examples/eavesdrop.go', which is also in package golang-dbus-dev".
+    Examples aren't needed to build anything that imports this package.
+
+ -- DANOS <noreply@danos.io>  Mon, 28 Sep 2026 09:45:00 +0800
+
 golang-github-godbus-dbus (4.0.0~git20170308-0vyatta4) unstable; urgency=medium
 
   * Rename Source/Package from golang-dbus(-dev) to

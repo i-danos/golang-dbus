@@ -5,6 +5,15 @@
 #export DH_VERBOSE=1
 export DH_GOPKG := github.com/godbus/dbus
 
+# _examples installs to the same path Debian's real golang-dbus-dev (the
+# unrelated v5 release, github.com/godbus/dbus/v5) uses for its own examples,
+# and packages needing both this v4-era fork and the real v5 in the same
+# build root (e.g. vci, via golang-go-systemd-dev) hit a dpkg file conflict:
+# "trying to overwrite '.../godbus/dbus/_examples/eavesdrop.go', which is
+# also in package golang-dbus-dev". Examples aren't needed to build anything
+# that imports this package, so drop them instead of fighting the collision.
+export DH_GOLANG_EXCLUDES := _examples
+
 override_dh_auto_test:
 	# upstream's tests require that dbus be running (surprise, surprise)
 	[ ! -S /var/run/dbus/system_bus_socket ] || \
