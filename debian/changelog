@@ -1,3 +1,15 @@
+golang-github-godbus-dbus (4.0.0~git20170308-0vyatta6) unstable; urgency=medium
+
+  * debian/rules: also set DH_GOLANG_EXCLUDES_ALL := 1. vyatta5's
+    DH_GOLANG_EXCLUDES alone had no effect on the installed package: that
+    variable defaults to only trimming build targets below debhelper compat
+    12 (this package is compat 9) unless DH_GOLANG_EXCLUDES_ALL is set,
+    confirmed by reading dh-golang's own golang.pm. _examples kept landing
+    in the .deb and the same file conflict with Debian's real
+    golang-dbus-dev persisted after vyatta5.
+
+ -- DANOS <noreply@danos.io>  Mon, 28 Sep 2026 10:15:00 +0800
+
 golang-github-godbus-dbus (4.0.0~git20170308-0vyatta5) unstable; urgency=medium
 
   * debian/rules: exclude _examples via DH_GOLANG_EXCLUDES. It installs to

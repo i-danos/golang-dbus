@@ -12,7 +12,13 @@ export DH_GOPKG := github.com/godbus/dbus
 # "trying to overwrite '.../godbus/dbus/_examples/eavesdrop.go', which is
 # also in package golang-dbus-dev". Examples aren't needed to build anything
 # that imports this package, so drop them instead of fighting the collision.
+#
+# DH_GOLANG_EXCLUDES_ALL defaults to false below compat 12 (we're compat 9),
+# meaning DH_GOLANG_EXCLUDES alone only trims build targets, not the files
+# actually installed -- _examples kept landing in the .deb regardless. Set
+# it explicitly so the exclude also applies at install time.
 export DH_GOLANG_EXCLUDES := _examples
+export DH_GOLANG_EXCLUDES_ALL := 1
 
 override_dh_auto_test:
 	# upstream's tests require that dbus be running (surprise, surprise)
