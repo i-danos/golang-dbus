@@ -1,3 +1,22 @@
+golang-github-godbus-dbus (4.0.0~git20170308-0vyatta4) unstable; urgency=medium
+
+  * Rename Source/Package from golang-dbus(-dev) to
+    golang-github-godbus-dbus(-dev), matching Debian trixie's own naming for
+    this same pre-v5 (github.com/godbus/dbus, unversioned import path) era of
+    this library. Debian trixie's "golang-dbus-dev" name now means the
+    unrelated, API-incompatible v5 (github.com/godbus/dbus/v5) release,
+    5.1.0-1; carrying our own v4-era fork under that same name shadowed
+    Debian's real v5 package project-wide, making every package that needs
+    the real v5 (golang-github-coreos-go-systemd-dev, from Debian:13/standard,
+    requires golang-dbus-dev >= 5.0.4) unresolvable. This only renames Debian
+    packaging metadata -- DH_GOPKG (github.com/godbus/dbus) and every Go
+    source file's own import path are unchanged.
+  * Every consumer's Build-Depends (config, configd, vci,
+    golang-github-jsouthworth-objtree, vyatta-tacacs, yangd) updated to match
+    in the same change.
+
+ -- DANOS <noreply@danos.io>  Mon, 28 Sep 2026 09:15:00 +0800
+
 golang-dbus (4.0.0~git20170308-0vyatta3) unstable; urgency=medium
 
   * DANOS Import

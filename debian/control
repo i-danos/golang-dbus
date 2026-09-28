@@ -1,4 +1,4 @@
-Source: golang-dbus
+Source: golang-github-godbus-dbus
 Section: devel
 Priority: extra
 Maintainer: Vyatta Package Maintainers <DL-vyatta-help@att.com>
@@ -6,7 +6,7 @@ Build-Depends: dbus-x11, debhelper (>= 9), dh-golang, golang-go
 Standards-Version: 3.9.6
 Homepage: https://github.com/godbus/dbus
 
-Package: golang-dbus-dev
+Package: golang-github-godbus-dbus-dev
 Architecture: all
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Built-Using: ${misc:Built-Using}

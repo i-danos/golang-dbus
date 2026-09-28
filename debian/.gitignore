@@ -1,4 +1,4 @@
 *.debhelper.log
 *.substvars
-golang-dbus-dev/
+golang-github-godbus-dbus-dev/
 files
